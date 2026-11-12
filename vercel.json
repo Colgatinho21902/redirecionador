@@ -3,5 +3,40 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "node build.mjs",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "headers": [
+        {
+          "value": "no-referrer",
+          "key": "Referrer-Policy"
+        },
+        {
+          "value": "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+          "key": "Content-Security-Policy"
+        },
+        {
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "key": "Permissions-Policy"
+        },
+        {
+          "value": "nosniff",
+          "key": "X-Content-Type-Options"
+        },
+        {
+          "value": "DENY",
+          "key": "X-Frame-Options"
+        },
+        {
+          "value": "off",
+          "key": "X-DNS-Prefetch-Control"
+        },
+        {
+          "value": "noindex, nofollow",
+          "key": "X-Robots-Tag"
+        }
+      ],
+      "source": "/(.*)"
+    }
+  ]
 }

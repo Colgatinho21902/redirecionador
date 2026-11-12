@@ -3,7 +3,10 @@ import { readFile } from 'node:fs/promises';
 import { resolve, sep, extname } from 'node:path';
 const root = resolve('dist');
 const types = { '.html':'text/html; charset=utf-8', '.webp':'image/webp', '.svg':'image/svg+xml' };
+const deployment = JSON.parse(await readFile(new URL('./vercel.json', import.meta.url), 'utf8'));
+const securityHeaders = Object.fromEntries(deployment.headers.flatMap(rule => rule.headers.map(({key, value}) => [key, value])));
 createServer(async (req, res) => {
+  for (const [name, value] of Object.entries(securityHeaders)) res.setHeader(name, value);
   try {
     const url = new URL(req.url, 'http://localhost');
     const file = resolve(root, '.' + (url.pathname === '/' ? '/index.html' : decodeURIComponent(url.pathname)));

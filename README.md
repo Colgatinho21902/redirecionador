@@ -9,7 +9,7 @@ Página simples e mobile para abrir uma oferta de uma loja. O visitante toca em 
 
 ```json
 {
-  "url": "https://meli.la/11rGvz5"
+  "url": "https://meli.la/33tejd3"
 }
 ```
 
@@ -33,3 +33,9 @@ Importe o repositório Colgatinho21902/redirecionador. Mantenha Root Directory .
 Execute `node build.mjs` e depois `node preview.mjs`. Abra http://127.0.0.1:5204/. O conteúdo de dist está incluído para visualização, mas é regenerado a partir de config.json a cada build/publicação.
 
 Logo do Mercado Livre obtida do CDN usado pela página pública do próprio Mercado Livre: https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/7.51.0/mercadolibre/pt_logo_large_plus@2x.webp . A página é um acesso ao link de divulgação; não afirma ser o site oficial da loja.
+
+## Privacidade da página intermediária
+
+A página usa Referrer-Policy no-referrer e o botão usa noreferrer para não enviar o endereço de origem na navegação. A logo é local; não há scripts, cookies próprios, pixels nem recursos de terceiros. A CSP bloqueia scripts, conexões de scripts, frames, formulários e recursos externos; cabeçalhos adicionais restringem permissões do navegador. A prévia Node aplica os mesmos cabeçalhos da Vercel.
+
+Isso não torna o visitante anônimo ao acessar a loja: o destino recebe a requisição, o IP, informações do navegador e os cookies/sessões da própria loja. O link de afiliado permanece identificável pelo Mercado Livre. A página não altera regras de atribuição ou decisões sobre contas vinculadas, nem garante comissão. Robots noindex/nofollow é orientação para rastreadores, não controle de acesso.
